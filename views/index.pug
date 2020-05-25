@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul(id='board' class='board')
+    if chatText
+      each post in chatText
+        li=post
+
+
+  //- - var prevText = document.getElementById('board').innerHTML;
+  form(action=`/api` method='POST' autocomplete="off")
+    label(for='chat-box') What you gotta say?
+      input(name='text' type='text' id='chat-box' class='chat-box' autocomplete="false")
+    button(type='submit') Submit

@@ -1,0 +1,43 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.board {
+  width: 420px;
+  height: 420px;
+  margin: 25px auto 25px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid blue;
+  overflow: scroll;
+}
+
+.board li {
+  list-style: none;
+  padding: 5px;
+  margin: 7px;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  outline: none;
+  display: block;
+  width: 420px;
+  height: 42px;
+  margin: 10px auto auto 0;
+  border-radius: 4px;
+  border: 1px solid blue;
+}
+
+button {
+  margin: 10px auto 10px 0;
+}
