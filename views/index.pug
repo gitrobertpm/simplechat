@@ -11,7 +11,12 @@ block content
 
 
   //- - var prevText = document.getElementById('board').innerHTML;
+  form(action=`/api` method='POST' autocomplete="off" id="chat-form")
+    label(for='chat-box') What you gotta say?
+      textarea(name='text' type='text' id='chat-box' class='chat-box' autocomplete="false" autofocus="on" placeholder="type your message here...")
+    button(type='submit') Submit
+
   form(action=`/api` method='POST' autocomplete="off")
     label(for='chat-box') What you gotta say?
-      input(name='text' type='text' id='chat-box' class='chat-box' autocomplete="false")
+      textarea(name='text' type='text' id='chat-box' class='chat-box' autocomplete="false" autofocus="on" placeholder="type your message here...")
     button(type='submit') Submit

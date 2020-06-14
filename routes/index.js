@@ -9,22 +9,22 @@ router.get('/', helpers.asyncHandler( async (req, res, next) => {
   res.render('index', { title: 'Simple Chat', chatText: savedText.text });
 }));
 
-router.post('/', helpers.asyncHandler( async (req, res, next) => {
-  // console.dir(req.body);
+// router.post('/', helpers.asyncHandler( async (req, res, next) => {
+//   // console.dir(req.body);
 
-  savedText.text.push(req.body.text);
+//   savedText.text.push(req.body.text);
 
-  if (savedText.text.length > 50) {
-    savedText.text.splice(0, savedText.text.length - 50);
-  }
+//   if (savedText.text.length > 50) {
+//     savedText.text.splice(0, savedText.text.length - 50);
+//   }
 
-  const newText = {
-    "text": [...savedText.text]
-  }
+//   const newText = {
+//     "text": [...savedText.text]
+//   }
 
-  await fs.promises.writeFile(`./text.json`, JSON.stringify(newText));
+//   await fs.promises.writeFile(`./text.json`, JSON.stringify(newText));
 
-  res.render('index', { title: 'Simple Chat', chatText: savedText.text });
-}));
+//   res.render('index', { title: 'Simple Chat', chatText: savedText.text });
+// }));
 
 module.exports = router;
