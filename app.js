@@ -14,7 +14,7 @@ app.io = io;
 const sockets = require('./routes/sockets')(io);
 
 const indexRouter = require('./routes');
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/users');
 
 app.use(cors())
 
@@ -34,11 +34,11 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 
 /* Root route redirect to the '/api/' route */
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Simple Chat'});
-  // res.redirect('/api');
+  // res.render('index', { title: 'Simple Chat'});
+  res.redirect('/chat');
 });
 
-// app.use('/api', indexRouter);
+app.use('/chat', indexRouter);
 // app.use('/api/users', usersRouter);
 
 

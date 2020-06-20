@@ -1,26 +1,68 @@
 "use strict"
 
-const form = document.querySelector('form');
-const board = document.querySelector('.board');
-const chat = document.querySelector('.chat-box');
-const text = document.querySelector('textarea');
+const signInContainer= document.querySelector('#sign-in-container');
+const signInForm = document.querySelector('#sign-in-form');
+const usernameInput = document.querySelector('#username-input');
+const chatForm = document.querySelector('#chat-form');
+const chatInput = document.querySelector('#chat-input');
+const chatBoard = document.querySelector('#chat-board');
+const isTyping = document.querySelector('#is-typing');
+
+chatBoard.scrollTop = chatBoard.scrollHeight;
+
+let user = '';
+let typing = false;
+let typingTimer_1 = undefined; 
+let typingTimer_2 = undefined;
 
 var socket = io.connect('http://localhost:5000');
 
-// submit text message without reload/refresh the page
-form.addEventListener('submit', e => {
-    e.preventDefault(); // prevents page reloading
-    socket.emit('chat_message', chat.value);
-    chat.value = '';
-    return false;
+// TODO - Add security and validation
+/**
+ * SignIn - Get username
+ */
+signInForm.addEventListener('submit', e => {
+  e.preventDefault();
+  user = usernameInput.value;
+  socket.emit('username', user);
+  usernameInput.value = '';
+  signInContainer.classList.add('hide');
+  return false;
 });
 
-text.addEventListener('keyup', e => {
+
+/**
+ * Chat submission
+ */
+chatForm.addEventListener('submit', e => {
   e.preventDefault(); // prevents page reloading
+  const message = chatInput.value.trim();
+  socket.emit('chat_message', [user, message]);
+  chatInput.value = '';
+  return false;
+});
+
+chatInput.addEventListener('keyup', e => {
+  e.preventDefault(); // prevents page reloading
+
   if (e.key === 'Enter') {
-    socket.emit('chat_message', chat.value);
-    chat.value = '';
+    const message = chatInput.value.trim();
+    socket.emit('chat_message', [user, message]);
+    chatInput.value = '';
+    typing = false;
+    socket.emit('not_typing', user);
     return false;
+  } else {
+    if (!typing) {
+      typing = true;
+      socket.broadcast.emit('is_typing', user);
+      clearTimeout(typingTimer_1);
+      typingTimer_1 = setTimeout(() => {
+        typing = false;
+        socket.broadcast.emit('not_typing', user);
+      }, 1000);
+      return false;
+    }
   }
 });
 
@@ -28,17 +70,26 @@ text.addEventListener('keyup', e => {
 
 // append the chat text message
 socket.on('chat_message', msg => {
-  board.insertAdjacentHTML('beforeEnd', `<li>${msg}</li>`);
+  chatBoard.insertAdjacentHTML('beforeEnd', `<li><span class="chat-username">${msg[0]}</span>: <span class="chat-msg">${msg[1]}</span></li>`);
+  chatBoard.scrollTop = chatBoard.scrollHeight + 100;
 });
 
 // append text if someone is online
 socket.on('is_online', username => {
-  board.insertAdjacentHTML('beforeEnd', `<li>${username}</li>`);
+  chatBoard.insertAdjacentHTML('beforeEnd', `<li>${username}</li>`);
+  chatBoard.scrollTop = chatBoard.scrollHeight + 100;
 });
 
-// ask username
-var username = prompt('Please tell me your name');
-socket.emit('username', username);
+socket.on('is_typing', user => {
+    isTyping.innerHTML += `<span class="is-typing-text" id="is-typing-${user}">${user} is typing...</span>`;
+});
+
+socket.on('not_typing', user => {
+  const isTypingElement = document.getElementById(`is-typing-${user}`);
+  if (isTypingElement) {
+    isTypingElement.parentNode.removeChild(isTypingElement);
+  }
+});
 
 
 console.log('test');

@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
 body {
   padding: 50px;
-  font: 14px 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
 
-.board {
+.chat-board {
   width: 420px;
   height: 420px;
   margin: 25px auto 25px 0;
@@ -19,11 +19,15 @@ a {
   overflow: scroll;
 }
 
-.board li {
+.chat-board li {
   list-style: none;
   padding: 5px;
   margin: 7px;
   border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+}
+
+.chat-username{
+  font-weight: bolder;
 }
 
 label {
@@ -41,6 +45,35 @@ textarea {
   border: 1px solid blue;
 }
 
+.is-typing {
+  color: rgba(50, 50, 50, 0.7);
+  transition: 0.2s ease-out;
+  height: 25px;
+}
+
 button {
   margin: 10px auto 10px 0;
+}
+
+.sign-in-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+
+}
+
+.sign-in-form {
+  width: 420px;
+  margin: 100px auto auto;
+  padding: 15px;
+  background: white;
+}
+
+.hide {
+  display: none;
 }
