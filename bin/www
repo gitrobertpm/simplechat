@@ -6,7 +6,7 @@
 
 const app = require('../app');
 const debug = require('debug')('api-backup:server');
-const http = require('http');
+const https = require('http');
 const cors = require('cors');
 
 
@@ -72,7 +72,7 @@ app.use(cors());
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 
 
 /**
