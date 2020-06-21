@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const logger = require('morgan');
-const cors = require('cors')
+const cors = require('cors');
 const app = express();
 const socket_io = require( 'socket.io' );
 
@@ -16,7 +16,7 @@ const sockets = require('./routes/sockets')(io);
 const indexRouter = require('./routes');
 // const usersRouter = require('./routes/users');
 
-app.use(cors())
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
