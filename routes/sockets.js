@@ -44,12 +44,7 @@ const myo = (io) => {
       }
 
       io.emit('chat_message', message);
-    });
-
-    socket.on('disconnect', () => {
-      io.emit('user disconnected');
-    });
-  
+    });  
   });
 
   return router;

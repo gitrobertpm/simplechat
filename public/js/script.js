@@ -55,11 +55,11 @@ chatInput.addEventListener('keyup', e => {
   } else {
     if (!typing) {
       typing = true;
-      socket.broadcast.emit('is_typing', user);
+      socket.emit('is_typing', user);
       clearTimeout(typingTimer_1);
       typingTimer_1 = setTimeout(() => {
         typing = false;
-        socket.broadcast.emit('not_typing', user);
+        socket.emit('not_typing', user);
       }, 1000);
       return false;
     }
@@ -80,12 +80,14 @@ socket.on('is_online', username => {
   chatBoard.scrollTop = chatBoard.scrollHeight + 100;
 });
 
-socket.on('is_typing', user => {
-    isTyping.innerHTML += `<span class="is-typing-text" id="is-typing-${user}">${user} is typing...</span>`;
+socket.on('is_typing', userTyping => {
+  if (userTyping !== user) {
+    isTyping.innerHTML += `<span class="is-typing-text" id="is-typing-${userTyping}">${userTyping} is typing...</span>`;
+  }
 });
 
-socket.on('not_typing', user => {
-  const isTypingElement = document.getElementById(`is-typing-${user}`);
+socket.on('not_typing', userTyping => {
+  const isTypingElement = document.getElementById(`is-typing-${userTyping}`);
   if (isTypingElement) {
     isTypingElement.parentNode.removeChild(isTypingElement);
   }
