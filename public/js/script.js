@@ -27,7 +27,7 @@ signInForm.addEventListener('submit', e => {
   socket.emit('username', user);
   usernameInput.value = '';
   signInContainer.classList.add('hide');
-  return false;
+  // return false;
 });
 
 

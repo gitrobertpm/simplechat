@@ -12,13 +12,13 @@ block content
   p(id="is-typing" class="is-typing")
 
   //- - var prevText = document.getElementById('board').innerHTML;
-  form(action=`/chat` method='POST' autocomplete="off" id="chat-form")
+  form(autocomplete="off" id="chat-form")
     label(for='chat-box') What you gotta say?
       textarea(name='text' type='text' id='chat-input' class='chat-input' autocomplete="false" autofocus="on" placeholder="type your message here...")
     button(type='submit') Submit
 
   div(id="sign-in-container" class="sign-in-container")
-    form(action=`/chat` method='POST' autocomplete="off" id="sign-in-form" class="sign-in-form")
+    form(autocomplete="off" id="sign-in-form" class="sign-in-form")
       label(for='sign-in') Your username?
         input(name='text' type='text' id='username-input' class='username-input' autocomplete="false" autofocus="on" placeholder="Username")
       button(type='submit') Submit
