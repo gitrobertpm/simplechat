@@ -37,18 +37,24 @@ signInForm.addEventListener('submit', e => {
  */
 chatForm.addEventListener('submit', e => {
   e.preventDefault(); // prevents page reloading
-  const message = chatInput.value.trim();
-  socket.emit('chat_message', [user, message]);
-  chatInput.value = '';
-  return false;
+  if (chatInput.value === '' || chatInput.value.length === 1) {
+    alert("Don't spam with blank text, yo!");
+    return false;
+  } else {
+    const message = chatInput.value.trim();
+    socket.emit('chat_message', [user, message]);
+    chatInput.value = '';
+    return false;
+  }
+  
 });
 
 chatInput.addEventListener('keyup', e => {
   e.preventDefault(); // prevents page reloading
-
+  console.log(chatInput.value.length);
   if (e.key === 'Enter') {
-    if (chatInput.value === '') {
-      alert("Don't spam with blank text, yo! &#x1F621;");
+    if (chatInput.value === '' || chatInput.value.length === 1) {
+      alert("Don't spam with blank text, yo!");
       return false;
     } else {
       const message = chatInput.value.trim();
