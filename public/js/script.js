@@ -47,12 +47,18 @@ chatInput.addEventListener('keyup', e => {
   e.preventDefault(); // prevents page reloading
 
   if (e.key === 'Enter') {
-    const message = chatInput.value.trim();
-    socket.emit('chat_message', [user, message]);
-    chatInput.value = '';
-    typing = false;
-    socket.emit('not_typing', user);
-    return false;
+    if (chatInput.value === '') {
+      alert("Don't spam with blank text, yo! &#x1F621;");
+      return false;
+    } else {
+      const message = chatInput.value.trim();
+      socket.emit('chat_message', [user, message]);
+      chatInput.value = '';
+      typing = false;
+      socket.emit('not_typing', user);
+      return false;
+    }
+    
   } else {
     if (!typing) {
       typing = true;
