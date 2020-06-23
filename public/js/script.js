@@ -15,7 +15,7 @@ let typing = false;
 let typingTimer_1 = undefined; 
 let typingTimer_2 = undefined;
 
-var socket = io.connect('http://localhost:5000');
+var socket = io.connect('http://lailassimplechatapp.herokuapp.com/');
 
 // TODO - Add security and validation
 /**

@@ -1,0 +1,6 @@
+{
+  "name": "Laila's Simple Chat App",
+  "description": "Simple chat app",
+  "repository": "https://github.com/gitrobertpm/simplechat",
+  "keywords": ["node", "Express", "socket.io", "chat"]
+}
