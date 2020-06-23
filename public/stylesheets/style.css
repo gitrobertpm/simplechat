@@ -1,7 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
+
+:root {
+  --dark-sky-blue: rgb(150, 189, 198);
+  --morning-blue: rgb(129, 150, 143);
+  --oxford-blue: rgb(0, 27, 46);
+  --maize-crayola: rgb(245, 203, 92);
+  --key-lime: rgb(233, 235, 135);
+}
+
+
+html,
 body {
-  padding: 50px;
+  width: 100%;
+  max-width: 100%;
+  height: 100%
+}
+
+body {
+  box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
 }
 
@@ -9,8 +26,75 @@ a {
   color: #00B7FF;
 }
 
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  outline: none;
+  text-indent: 10px;
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: 42px;
+  margin: 10px auto;
+  padding: 0;
+  border-radius: 4px;
+  border: 1px solid var(--morning-blue);
+}
+
+button {
+  color: var(--maize-crayola);
+  width: 100%;
+  max-width: 250px;
+  height: 42px;
+  margin: 10px auto;
+  padding: 0;
+  background: var(--oxford-blue);
+  border-radius: 4px;
+  border: 1px solid rgba(50, 50, 50, 0.3);
+}
+
+
+.sign-in-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+
+}
+
+.sign-in-form {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  padding: 35px 15px 40px;
+  background: white;
+}
+
+.sign-in-form label {
+  font-size: 1.5rem;
+}
+
+.sign-in-form input {
+  font-size: 1rem;
+  margin: 25px auto;
+}
+
+.sign-in-form button {
+  font-weight: bold;
+  font-size: 1.12rem;
+}
+
+
+
 .chat-board {
-  width: 420px;
+  width: 90%;
   height: 420px;
   margin: 25px auto 25px 0;
   padding: 10px;
@@ -30,20 +114,7 @@ a {
   font-weight: bolder;
 }
 
-label {
-  font-weight: bold;
-}
 
-input,
-textarea {
-  outline: none;
-  display: block;
-  width: 420px;
-  height: 42px;
-  margin: 10px auto auto 0;
-  border-radius: 4px;
-  border: 1px solid blue;
-}
 
 .is-typing {
   color: rgba(50, 50, 50, 0.7);
@@ -51,28 +122,9 @@ textarea {
   height: 25px;
 }
 
-button {
-  margin: 10px auto 10px 0;
-}
 
-.sign-in-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
 
-}
 
-.sign-in-form {
-  width: 420px;
-  margin: 100px auto auto;
-  padding: 15px;
-  background: white;
-}
 
 .hide {
   display: none;

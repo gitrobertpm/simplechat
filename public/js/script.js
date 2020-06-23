@@ -10,10 +10,11 @@ const isTyping = document.querySelector('#is-typing');
 
 chatBoard.scrollTop = chatBoard.scrollHeight;
 
+usernameInput.focus();
+
 let user = '';
 let typing = false;
 let typingTimer_1 = undefined; 
-let typingTimer_2 = undefined;
 
 var socket = io.connect('http://lailassimplechatapp.herokuapp.com/');
 
