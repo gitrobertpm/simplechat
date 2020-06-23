@@ -12,6 +12,7 @@ const io = socket_io();
 app.io = io;
 
 const sockets = require('./routes/sockets')(io);
+app.use(sockets);
 
 const indexRouter = require('./routes');
 // const usersRouter = require('./routes/users');
