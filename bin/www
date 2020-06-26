@@ -6,8 +6,8 @@
 
 const app = require('../app');
 const debug = require('debug')('api-backup:server');
-const http = require('http');
-// const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -15,13 +15,20 @@ const http = require('http');
 
 const port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
-// app.use(cors());
+
+
+const options = {
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+};
+
+// console.log(options);
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const server = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.

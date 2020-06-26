@@ -12,8 +12,8 @@ let user = '';
 let typing = false;
 let typingTimer_1 = undefined; 
 
-const socket = io.connect('http://lailassimplechatapp.herokuapp.com/');
-// const socket = io.connect('http://localhost:5000/');
+// const socket = io.connect('http://lailassimplechatapp.herokuapp.com/');
+const socket = io.connect('http://localhost:5000/');
 
 chatBoard.scrollTop = chatBoard.scrollHeight;
 
