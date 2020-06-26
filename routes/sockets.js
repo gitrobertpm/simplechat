@@ -13,7 +13,7 @@ const myo = (io) => {
     });
   
     socket.on('disconnect', username => {
-      io.emit('is_online', '🔴 <i>' + socket.username + ' has left the chat...</i>');
+      io.emit('is_online', '🔴 <i>' + socket.username || username + ' has left the chat...</i>');
     })
 
     socket.on('is_typing', user => {

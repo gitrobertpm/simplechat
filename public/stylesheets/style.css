@@ -14,16 +14,36 @@ html,
 body {
   width: 100%;
   max-width: 100%;
-  height: 100%
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  /* background: linear-gradient(var(--dark-sky-blue), var(--morning-blue), white); */
 }
 
 body {
+  min-height: 100vh;
+  text-align: center;
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
+  /* background: var(--oxford-blue); */
+  /* background: radial-gradient(circle at top right, var(--maize-crayola), var(--key-lime)); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
   color: #00B7FF;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
 }
 
 label {
@@ -36,7 +56,6 @@ textarea {
   text-indent: 10px;
   display: block;
   width: 100%;
-  max-width: 250px;
   height: 42px;
   margin: 10px auto;
   padding: 0;
@@ -45,13 +64,12 @@ textarea {
 }
 
 button {
-  color: var(--maize-crayola);
+  
   width: 100%;
-  max-width: 250px;
   height: 42px;
   margin: 10px auto;
   padding: 0;
-  background: var(--oxford-blue);
+  
   border-radius: 4px;
   border: 1px solid rgba(50, 50, 50, 0.3);
 }
@@ -83,49 +101,146 @@ button {
 
 .sign-in-form input {
   font-size: 1rem;
+  max-width: 250px;
   margin: 25px auto;
 }
 
 .sign-in-form button {
   font-weight: bold;
   font-size: 1.12rem;
+  color: var(--maize-crayola);
+  max-width: 250px;
+  background: var(--oxford-blue);
 }
 
 
+.chat-board-container {
+  margin: 15px auto 5px;
+  padding: 0 7px;
+  background: white;
+}
 
 .chat-board {
-  width: 90%;
+  text-align: left;
+  width: 100%;
   height: 420px;
-  margin: 25px auto 25px 0;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid blue;
+  margin: 0 auto;
+  background: white;
   overflow: scroll;
 }
 
 .chat-board li {
-  list-style: none;
-  padding: 5px;
-  margin: 7px;
-  border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+  padding: 7px 5px;
+  margin: 0;
+}
+
+.chat-board li:nth-child(odd) {
+  background: rgba(150, 189, 198, 0.1);
 }
 
 .chat-username{
   font-weight: bolder;
 }
 
-
-
-.is-typing {
+.chat-time {
+  font-size: 0.8rem;
+  font-weight: lighter;
   color: rgba(50, 50, 50, 0.7);
-  transition: 0.2s ease-out;
-  height: 25px;
+}
+
+.chat-msg {
+  margin-top: 5px;
+}
+
+.chat-form {
+  width: 100%;
+}
+
+.chat-form textarea {
+  width: 90%;
+  height: 55px;
+  padding-top: 10px;
+}
+
+.chat-form button {
+  font-weight: bold;
+  font-size: 1.12rem;
+  color: var(--maize-crayola);
+  width: 90%;
+  height: 55px;
+  background: var(--oxford-blue);
 }
 
 
-
-
+.is-typing {
+  text-align: left;
+  color: rgba(50, 50, 50, 0.7);
+  transition: 0.2s ease-out;
+  height: 25px;
+  margin: 0 auto;
+  padding-top: 5px;
+}
 
 .hide {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+  h1 {
+    font-size: 2rem;
+    margin: 35px auto;
+  }
+
+  .sign-in-form {
+    max-width: 420px;
+    margin: 100px auto;
+  }
+
+  .chat-board-container {
+    max-width: 768px;
+  }
+
+  .chat-board {
+    height: 650px;
+    border: 1px solid var(--morning-blue);
+    border-radius: 4px;
+  }
+
+  .chat-form {
+    max-width: 768px;
+    margin: auto;
+  }
+
+  .chat-form textarea {
+    width: 100%;
+    max-width: 100%;
+    margin: auto 0;
+  }
+
+  .chat-form button {
+    float: right;
+    max-width: 100px;
+    height: 55px;
+  }
+  
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 3rem;
+    margin: 35px auto;
+  }
+
+  .chat-board-container {
+    max-width: 900px;
+  }
+
+  .chat-board {
+    height: 750px;
+  }
+
+  .chat-form {
+    max-width: 900px;
+  }
 }
