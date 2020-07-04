@@ -7,6 +7,7 @@
 const app = require('../app');
 const debug = require('debug')('api-backup:server');
 const https = require('https');
+// const http = require('http');
 const fs = require('fs');
 
 /**
@@ -29,6 +30,7 @@ const options = {
  */
 
 const server = https.createServer(options, app);
+// const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
