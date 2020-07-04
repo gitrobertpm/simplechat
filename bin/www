@@ -18,9 +18,14 @@ const port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
 
 
+// const options = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem')
+// };
+
 const options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
+  key: fs.readFileSync('./server.key'),
+  cert: fs.readFileSync('./server.crt')
 };
 
 // console.log(options);
