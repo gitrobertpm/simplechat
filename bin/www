@@ -6,8 +6,8 @@
 
 const app = require('../app');
 const debug = require('debug')('api-backup:server');
-const https = require('https');
-// const http = require('http');
+// const https = require('https');
+const http = require('http');
 const fs = require('fs');
 
 /**
@@ -23,10 +23,10 @@ app.set('port', port);
 //   cert: fs.readFileSync('./cert.pem')
 // };
 
-const options = {
-  key: fs.readFileSync('./server.key'),
-  cert: fs.readFileSync('./server.crt')
-};
+// const options = {
+//   key: fs.readFileSync('./server.key'),
+//   cert: fs.readFileSync('./server.crt')
+// };
 
 // console.log(options);
 
@@ -35,8 +35,8 @@ const options = {
  */
 
 // const server = https.createServer(app);
-const server = https.createServer(options, app);
-// const server = http.createServer(app);
+// const server = https.createServer(options, app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
