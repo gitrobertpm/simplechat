@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  
+  header
+    h1= title
+    button(type="button" id="vid-btn" class="vid-btn" value="Video") Video
+
   div(id='chat-board-container' class='chat-board-container')
     ul(id='chat-board' class='chat-board')
       if chatText

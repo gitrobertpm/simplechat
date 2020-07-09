@@ -13,7 +13,10 @@ const myo = (io) => {
     });
   
     socket.on('disconnect', username => {
-      io.emit('is_online', '🔴 <i>' + socket.username || username + ' has left the chat...</i>');
+      let thisUser = socket.username || username;
+      if (thisUser !== undefined) {
+        io.emit('is_online', '🔴 <i>' + thisUser + ' has left the chat...</i>');
+      }
     })
 
     socket.on('is_typing', user => {
@@ -23,6 +26,10 @@ const myo = (io) => {
     socket.on('not_typing', user => {
       io.emit('not_typing', user);
     })
+
+    socket.on('video', data => {
+      io.emit('video', data);
+    });
   
     socket.on('chat_message', async message => {
 

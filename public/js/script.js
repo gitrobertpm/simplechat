@@ -6,14 +6,16 @@ const usernameInput = document.querySelector('#username-input');
 const chatForm = document.querySelector('#chat-form');
 const chatInput = document.querySelector('#chat-input');
 const chatBoard = document.querySelector('#chat-board');
+const chatBoardContainer = document.querySelector('#chat-board-container');
 const isTyping = document.querySelector('#is-typing');
+const vidBtn = document.querySelector('#vid-btn')
 
 let user = '';
 let typing = false;
 let typingTimer_1 = undefined; 
 
-const socket = io.connect('https://lailassimplechatapp.herokuapp.com/');
-// const socket = io.connect('https://localhost:5000/');
+// const socket = io.connect('https://lailassimplechatapp.herokuapp.com/');
+const socket = io.connect('http://localhost:5000/');
 
 chatBoard.scrollTop = chatBoard.scrollHeight;
 
@@ -41,6 +43,9 @@ const inputIsOkay = input => {
   }
   return true;
 }
+
+
+
 
 
 /**
@@ -122,6 +127,8 @@ chatInput.addEventListener('keyup', e => {
 
 
 
+
+
 // append the chat text message
 socket.on('chat_message', msg => {
   chatBoard.insertAdjacentHTML('beforeEnd', `<li><span class="chat-username">${msg[0]}</span>: <span class="chat-time">${msg[1]}</span><p class="chat-msg">${msg[2]}</p></li>`);
@@ -146,6 +153,47 @@ socket.on('not_typing', userTyping => {
     isTypingElement.parentNode.removeChild(isTypingElement);
   }
 });
+
+
+/**
+ * Video Experiment
+ */
+
+// let vidEl = (user) => {
+//   return `<video id="${user}-vid" class="vid" width="200" height="150" autoplay></video>`;
+// }
+
+// vidBtn.addEventListener('click', e => {
+//   e.preventDefault();
+//   if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//     chatBoardContainer.insertAdjacentHTML('beforebegin', vidEl('me'));
+//     const meVid = document.getElementById('me-vid');
+//     // Not adding `{ audio: true }` since we only want video now
+//     navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+//         //video.src = window.URL.createObjectURL(stream);
+//         meVid.srcObject = stream;
+//         meVid.play();
+//         console.log(user, stream)
+//         socket.emit('video', [user, stream]);
+//     });
+//   } else {
+//     alert('Sorry! Cannot find camera on your machine');
+//   }
+// });
+
+// socket.on('video', data => {
+//     chatBoardContainer.insertAdjacentHTML('beforebegin', vidEl(data[0]));
+//     const uVid = document.getElementById(`${data[0]}-vid`);
+//     uVid.srcObject = data[1];
+//     uVid.play();
+//     console.log(data[0], data[1]);
+//     // Not adding `{ audio: true }` since we only want video now
+//     // navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+//     //     //video.src = window.URL.createObjectURL(stream);
+        
+//     //     // socket.emit('video', [user, stream]);
+//     // });
+// });
 
 
 console.log('test');

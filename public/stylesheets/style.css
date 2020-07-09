@@ -74,6 +74,26 @@ button {
   border: 1px solid rgba(50, 50, 50, 0.3);
 }
 
+header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header h1 {
+  clear: left;
+}
+
+.vid-btn {
+  float: right;
+  width: 100px;
+  margin-top: -75px;
+}
+
+.vid {
+  /* max-width: 200px; */
+}
+
 
 .sign-in-container {
   position: fixed;
@@ -123,7 +143,7 @@ button {
 .chat-board {
   text-align: left;
   width: 100%;
-  height: 420px;
+  height: 350px;
   margin: 0 auto;
   background: white;
   overflow: scroll;
@@ -202,7 +222,7 @@ button {
   }
 
   .chat-board {
-    height: 500px;
+    height: 420px;
     border: 1px solid var(--morning-blue);
     border-radius: 4px;
   }
@@ -234,10 +254,6 @@ button {
 
   .chat-board-container {
     max-width: 900px;
-  }
-
-  .chat-board {
-    height: 600px;
   }
 
   .chat-form {
