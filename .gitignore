@@ -3,6 +3,10 @@
 *.csr
 *.key
 
+bin/*.crt 
+bin/*.csr
+bin/*.key
+
 # Logs
 logs
 *.log
